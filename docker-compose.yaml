@@ -2,11 +2,11 @@ version: '3.7'
 
 services:
   db:
-    image: "postgres:11"
+    image: "postgres:16"
     environment:
       - POSTGRES_DBNAME=guidly_backend
       - POSTGRES_USER=guidly_backend
-      - POSTGRES_PASS=guidly_backend
+      - POSTGRES_PASSWORD=guidly_backend
       - POSTGRES_PORT=5432
     volumes:
       - postgres_data:/var/lib/postgresql/data/

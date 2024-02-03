@@ -25,18 +25,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Developer Apps
     "users",
-    "authentication",
     # Third-party packages
     "drf_spectacular",
     "rest_framework",
-    # Auth modules
-    "rest_framework.authtoken",
-    "dj_rest_auth",
-    "allauth",
-    "allauth.account",
-    "dj_rest_auth.registration",
 ]
 
+SITE_ID = 1
 # Custom user model
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -48,6 +42,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -102,11 +97,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 REST_FRAMEWORK = {
-    # Authentication
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.TokenAuthentication",
-        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
-    ),
     # Activate drf_spectacular
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
@@ -117,15 +107,6 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "guidly_backend Project API",
     "VERSION": "1.0.0",
 }
-
-
-# Dj-rest-auth and all-auth config
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-ACCOUNT_EMAIL_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = "username"
-ACCOUNT_EMAIL_VERIFICATION = "optional"
-REST_USE_JWT = True
-JWT_AUTH_COOKIE = "auth"
 
 
 ALLOWED_HOSTS = ["*"]
