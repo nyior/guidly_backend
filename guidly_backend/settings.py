@@ -24,8 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Developer Apps
-    "users",
-    "content",
+    "apps.users",
+    "apps.content",
     # Third-party packages
     "drf_spectacular",
     "rest_framework",
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 # Custom user model
-AUTH_USER_MODEL = "users.CustomUser"
+AUTH_USER_MODEL = "apps.users.CustomUser"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
