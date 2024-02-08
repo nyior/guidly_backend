@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Developer Apps
     "users",
+    "content",
     # Third-party packages
     "drf_spectacular",
     "rest_framework",
