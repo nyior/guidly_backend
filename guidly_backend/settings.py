@@ -33,7 +33,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 # Custom user model
-AUTH_USER_MODEL = "apps.users.CustomUser"
+AUTH_USER_MODEL = "users.CustomUser"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

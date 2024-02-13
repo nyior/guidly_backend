@@ -22,7 +22,6 @@ class Guide(ContentModelMixin):
         CustomUser,
         blank=True,
         null=True,
-        on_delete=models.SET_NULL,
         related_name="guides",
     )
 
@@ -33,7 +32,7 @@ class Blog(models.Model):
         Guide,
         blank=True,
         null=True,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         related_name="blogs",
     )
     category = models.ForeignKey(
@@ -47,6 +46,5 @@ class Blog(models.Model):
         CustomUser,
         blank=True,
         null=True,
-        on_delete=models.SET_NULL,
-        related_name="guides",
+        related_name="blog",
     )
