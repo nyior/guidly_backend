@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.users.models import CustomUser
+from users.models import CustomUser
 
 from .mixins import ContentModelMixin
 
