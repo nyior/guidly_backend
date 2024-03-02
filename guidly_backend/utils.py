@@ -17,7 +17,7 @@ def generate_slug(word):
     for character in word:
 
         if character == " ":
-            alphanumeric += "-"
+            pass
 
         if character == "-":
             pass
