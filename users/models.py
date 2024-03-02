@@ -7,4 +7,4 @@ class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     bio = models.TextField(null=True, blank=True)
-    profile_picture = models.URLField(max_length=1000)
+    profile_picture = models.URLField(null=True, blank=True, max_length=1000)

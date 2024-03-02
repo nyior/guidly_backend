@@ -17,7 +17,7 @@ it will take a while to execute. It's normal. Subsequent executions won't take t
 - Run `docker-compose up --build` to build your docker image and start your docker container.
 
 - Navigate to your project directory in a new terminal and run 
-`docker-compose exec `web python manage.py makemigrations users` to create migrations for the customUser model
+`docker-compose exec web python manage.py makemigrations users` to create migrations for the customUser model
 
 - Run `docker-compose exec web python manage.py migrate`
 
