@@ -11,5 +11,5 @@ class CustomUserViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         name = self.request.data["first_name"] + self.request.data["last_name"]
-        slug = generate_slug(name)
-        serializer.save(slug=slug)
+        username = generate_slug(name)
+        serializer.save(username=username)
