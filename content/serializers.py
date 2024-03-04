@@ -8,6 +8,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = "__all__"
+        read_only_fields = ["id", "slug"]
 
 
 class GuideSerializer(serializers.ModelSerializer):
@@ -15,6 +16,7 @@ class GuideSerializer(serializers.ModelSerializer):
     class Meta:
         model = Guide
         fields = "__all__"
+        read_only_fields = ["id", "slug", "created", "updated", "views"]
 
 
 class BlogSerializer(serializers.ModelSerializer):
