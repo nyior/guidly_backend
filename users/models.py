@@ -8,3 +8,6 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(max_length=100)
     bio = models.TextField(null=True, blank=True)
     profile_picture = models.URLField(null=True, blank=True, max_length=1000)
+
+    def __str__(self) -> str:
+        return f"{self.first_name}: {self.last_name}"
