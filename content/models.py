@@ -14,17 +14,14 @@ class Category(models.Model):
 
 
 class Guide(ContentModelMixin):
-    category = models.ForeignKey(
+    category = models.ManyToManyField(
         Category,
         blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
         related_name="guides",
     )
     authors = models.ManyToManyField(
         CustomUser,
         blank=True,
-        null=True,
         related_name="guides",
     )
 
@@ -41,17 +38,14 @@ class Blog(ContentModelMixin):
         on_delete=models.CASCADE,
         related_name="blogs",
     )
-    category = models.ForeignKey(
+    category = models.ManyToManyField(
         Category,
         blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
         related_name="blogs",
     )
     authors = models.ManyToManyField(
         CustomUser,
         blank=True,
-        null=True,
         related_name="blog",
     )
     order = models.IntegerField(null=True, blank=True)

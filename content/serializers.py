@@ -15,7 +15,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class GuideSerializer(serializers.ModelSerializer):
     blogs = serializers.StringRelatedField(many=True)
     authors = serializers.StringRelatedField(many=True)
-    category = serializers.StringRelatedField()
+    category = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Guide
@@ -27,15 +27,14 @@ class GuideSerializer(serializers.ModelSerializer):
             "updated",
             "views",
             "blogs",
-            "category",
         ]
 
 
 class BlogSerializer(serializers.ModelSerializer):
     authors = serializers.StringRelatedField(many=True)
-    category = serializers.StringRelatedField()
+    category = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Blog
         fields = "__all__"
-        read_only_fields = ["id", "slug", "created", "updated", "views", "category"]
+        read_only_fields = ["id", "slug", "created", "updated", "views"]
