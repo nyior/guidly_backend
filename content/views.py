@@ -1,8 +1,10 @@
 from rest_framework import viewsets
 
-from content.models import Blog, Category, Guide
+from content.models import Blog, Category, CustomUser, Guide
 from content.serializers import BlogSerializer, CategorySerializer, GuideSerializer
 from guidly_backend.utils import generate_slug
+
+# TODO: Refactor repeated code here
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -24,7 +26,17 @@ class GuideViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         title = self.request.data["title"]
         slug = generate_slug(title)
-        serializer.save(slug=slug)
+        guide = serializer.save(slug=slug)
+
+        authors = self.request.data["authors"]
+        for author in authors:
+            try:
+                a = CustomUser.objects.get(slug=author["slug"])
+                guide.authors.add(a)
+            except Exception:
+                raise Exception
+
+        return guide
 
 
 class BlogViewSet(viewsets.ModelViewSet):
@@ -35,4 +47,14 @@ class BlogViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         title = self.request.data["title"]
         slug = generate_slug(title)
-        serializer.save(slug=slug)
+        blog = serializer.save(slug=slug)
+
+        authors = self.request.data["authors"]
+        for author in authors:
+            try:
+                a = CustomUser.objects.get(slug=author["slug"])
+                blog.authors.add(a)
+            except Exception:
+                raise Exception
+
+        return blog
