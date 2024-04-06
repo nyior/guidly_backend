@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from content.models import Blog, Category, Guide
+from users.models import CustomUser
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -13,10 +14,15 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class GuideSerializer(serializers.ModelSerializer):
-    blogs = serializers.StringRelatedField(many=True, read_only=True)
-    # TODO: Fix NotImplementedError: StringRelatedField.to_internal_value() must be implemented for field
-    authors = serializers.StringRelatedField(many=True)
-    categories = serializers.StringRelatedField(many=True)
+    blogs = serializers.SlugRelatedField(
+        many=True, queryset=Blog.objects.all(), slug_field="title"
+    )
+    authors = serializers.SlugRelatedField(
+        many=True, queryset=CustomUser.objects.all(), slug_field="username"
+    )
+    category = serializers.SlugRelatedField(
+        many=True, queryset=Category.objects.all(), slug_field="name"
+    )
 
     class Meta:
         model = Guide
@@ -32,8 +38,12 @@ class GuideSerializer(serializers.ModelSerializer):
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    authors = serializers.StringRelatedField(many=True)
-    category = serializers.StringRelatedField(many=True)
+    authors = serializers.SlugRelatedField(
+        many=True, queryset=CustomUser.objects.all(), slug_field="username"
+    )
+    category = serializers.SlugRelatedField(
+        many=True, queryset=Category.objects.all(), slug_field="name"
+    )
 
     class Meta:
         model = Blog
