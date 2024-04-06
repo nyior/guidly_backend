@@ -13,6 +13,7 @@ class Category(models.Model):
         return f"{self.slug}: {self.name}"
 
 
+# TODO: Add thumb images for guides and blog
 class Guide(ContentModelMixin):
     category = models.ManyToManyField(
         Category,

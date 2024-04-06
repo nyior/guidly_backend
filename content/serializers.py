@@ -13,9 +13,10 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class GuideSerializer(serializers.ModelSerializer):
-    blogs = serializers.StringRelatedField(many=True)
+    blogs = serializers.StringRelatedField(many=True, read_only=True)
+    # TODO: Fix NotImplementedError: StringRelatedField.to_internal_value() must be implemented for field
     authors = serializers.StringRelatedField(many=True)
-    category = serializers.StringRelatedField(many=True)
+    categories = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Guide

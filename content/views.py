@@ -28,13 +28,24 @@ class GuideViewSet(viewsets.ModelViewSet):
         slug = generate_slug(title)
         guide = serializer.save(slug=slug)
 
-        authors = self.request.data["authors"]
-        for author in authors:
-            try:
-                a = CustomUser.objects.get(slug=author["slug"])
-                guide.authors.add(a)
-            except Exception:
-                raise Exception
+        aths = self.request.data["authors"]
+        cts = self.request.data["categories"]
+
+        if len(aths) > 0:
+            for a in aths:
+                try:
+                    a = CustomUser.objects.get(slug=a["slug"])
+                    guide.authors.add(a)
+                except Exception:
+                    raise Exception
+
+        if len(cts) > 0:
+            for c in cts:
+                try:
+                    c = Category.objects.get(slug=c["slug"])
+                    guide.authors.add(a)
+                except Exception:
+                    raise Exception
 
         return guide
 
@@ -49,12 +60,23 @@ class BlogViewSet(viewsets.ModelViewSet):
         slug = generate_slug(title)
         blog = serializer.save(slug=slug)
 
-        authors = self.request.data["authors"]
-        for author in authors:
-            try:
-                a = CustomUser.objects.get(slug=author["slug"])
-                blog.authors.add(a)
-            except Exception:
-                raise Exception
+        aths = self.request.data["authors"]
+        cts = self.request.data["categories"]
+
+        if len(aths) > 0:
+            for a in aths:
+                try:
+                    a = CustomUser.objects.get(slug=a["slug"])
+                    blog.authors.add(a)
+                except Exception:
+                    raise Exception
+
+        if len(cts) > 0:
+            for c in cts:
+                try:
+                    c = Category.objects.get(slug=c["slug"])
+                    blog.authors.add(a)
+                except Exception:
+                    raise Exception
 
         return blog
