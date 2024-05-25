@@ -8,6 +8,7 @@ class ContentModelMixin(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     views = models.IntegerField(default=0)
+    header_image = models.URLField(null=True, blank=True, max_length=1000)
 
     class Meta:
         abstract = True
