@@ -22,8 +22,12 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 urlpatterns = [
     path("api/v1/", include("users.urls")),
     path("api/v1/", include("content.urls")),
-    path("admin/", admin.site.urls),
+    path("back-office/", admin.site.urls),
     path("api/v1/schema/", SpectacularAPIView.as_view(), name="schema"),
     # Docs UI
     path("api/v1/docs", SpectacularSwaggerView.as_view(url_name="schema"), name="docs"),
 ]
+
+admin.site.site_title = "Guiddly Back Office"
+admin.site.site_header = "Guiddly Back Office"
+admin.site.index_title = "Guiddly Back Office"
