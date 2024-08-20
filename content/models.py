@@ -24,6 +24,20 @@ class Guide(ContentModelMixin):
         blank=True,
         related_name="guides",
     )
+    technical_editor = models.ForeignKey(
+        CustomUser,
+        blank=True,
+        null=True,
+        related_name="guides_reviewed",
+        on_delete=models.SET_NULL,
+    )
+    copy_editor = models.ForeignKey(
+        CustomUser,
+        blank=True,
+        null=True,
+        related_name="guides_edited",
+        on_delete=models.SET_NULL,
+    )
 
     def __str__(self):
         return f"{self.slug}: {self.title}"
@@ -47,6 +61,20 @@ class Blog(ContentModelMixin):
         CustomUser,
         blank=True,
         related_name="blog",
+    )
+    technical_editor = models.ForeignKey(
+        CustomUser,
+        blank=True,
+        null=True,
+        related_name="blogs_reviewed",
+        on_delete=models.SET_NULL,
+    )
+    copy_editor = models.ForeignKey(
+        CustomUser,
+        blank=True,
+        null=True,
+        related_name="blogs_edited",
+        on_delete=models.SET_NULL,
     )
     order = models.IntegerField(null=True, blank=True)
 

@@ -23,6 +23,8 @@ class GuideSerializer(serializers.ModelSerializer):
     category = serializers.SlugRelatedField(
         many=True, queryset=Category.objects.all(), slug_field="name"
     )
+    technical_editor = serializers.StringRelatedField()
+    copy_editor = serializers.StringRelatedField()
 
     class Meta:
         model = Guide
@@ -43,6 +45,8 @@ class BlogSerializer(serializers.ModelSerializer):
     category = serializers.SlugRelatedField(
         many=True, queryset=Category.objects.all(), slug_field="name"
     )
+    technical_editor = serializers.StringRelatedField()
+    copy_editor = serializers.StringRelatedField()
 
     class Meta:
         model = Blog
