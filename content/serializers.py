@@ -30,8 +30,7 @@ class GuideSerializer(serializers.ModelSerializer):
         read_only_fields = [
             "id",
             "slug",
-            "created",
-            "updated",
+            "last_updated",
             "views",
             "blogs",
         ]
@@ -48,4 +47,4 @@ class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
         fields = "__all__"
-        read_only_fields = ["id", "slug", "created", "updated", "views"]
+        read_only_fields = ["id", "slug", "last_updated", "views"]
