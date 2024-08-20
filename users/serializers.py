@@ -4,6 +4,7 @@ from users.models import CustomUser
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
+    creator_type = serializers.SlugRelatedField(slug_field="name")
 
     class Meta:
         model = CustomUser

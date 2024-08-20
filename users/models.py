@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
-# Authord or Technical Editor or Copy Editor
+# Author or Technical Editor or Copy Editor
 class ContentCreatorType(models.Model):
     slug = models.SlugField(max_length=500)
     name = models.CharField(max_length=500)
@@ -17,7 +17,7 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(max_length=100)
     bio = models.TextField(null=True, blank=True)
     profile_picture = models.URLField(null=True, blank=True, max_length=1000)
-    author_type = models.ForeignKey(
+    creator_type = models.ForeignKey(
         ContentCreatorType,
         blank=True,
         null=True,
