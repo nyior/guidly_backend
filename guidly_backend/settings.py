@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # Third-party packages
     "drf_spectacular",
     "rest_framework",
+    "django_summernote",
 ]
 
 SITE_ID = 1
@@ -43,7 +44,6 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "allauth.account.middleware.AccountMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -125,3 +125,9 @@ USE_TZ = True
 
 
 STATIC_URL = "/static/"
+STATIC_ROOT = "staticfiles"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+SUMMERNOTE_THEME = "bs4"  # Show summernote with Bootstrap4
